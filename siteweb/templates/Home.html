@@ -1,0 +1,22 @@
+{% extends "base.html" %} {% block title %}Home{% endblock %} {% block content
+    %}
+    <h1 align="center" ><marquee>Veuillez entrer vos commentaire ici</marquee></h1>
+    <ul class="list-group list-group-flush" id="notes">
+      <a href="https://french.alibaba.com/?src=sem_ggl&field=UG&from=sem_ggl&cmpgn=13511701563&adgrp=125226276202&fditm=&tgt=kwd-296594154840&locintrst=&locphyscl=1012727&mtchtyp=b&ntwrk=g&device=c&dvcmdl=&creative=527640236113&plcmnt=&plcmntcat=&aceid=&position=&gclid=Cj0KCQiAofieBhDXARIsAHTTldqruso7Rby1KXDWeFPXnijw7F3Ck9pM6f7SZg81zQJlLQaaI5LvI-MaAi8FEALw_wcB">ALIBABA</a>
+      {% for note in user.notes %}
+      <li class="list-group-item">
+        {{ note.data }}
+        <button type="button" class="close" onClick="deleteNote({{ note.id }})">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </li>
+      {% endfor %}
+    </ul>
+    <form method="POST">
+      <textarea name="note" id="note" class="form-control"></textarea>
+      <br />
+      <div align="center">
+        <button type="submit" class="btn btn-primary">Add Note</button>
+      </div>
+    </form>
+    {% endblock %}
